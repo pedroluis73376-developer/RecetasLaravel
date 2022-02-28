@@ -9,10 +9,15 @@ class RecetaController extends Controller
 
     public function __invoke(Request $request)
     {
-        $receta = [
-            'nombre' => 'pizza hawuaiana',
-            'descripcion'=>'prepara la mejor pizzaa'
-       ];
-       return $receta;
+
+        $recetas = ['receta pizza', 'receta hamburguesa', 'receta tacos'];
+        $categoria = ['comida mexicana','comida argentina', 'postres'];
+
+
+       // return view('recetas.index')
+       // -> with('recetas',$recetas) 
+      //  -> with('categoria',$categoria);
+
+      return view('recetas.index',compact('recetas','categoria'));
     }
 }
