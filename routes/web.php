@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/recetas', 'RecetaController');
-
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/recetas', 'RecetaController@index')->name('recetas.index');
+Route::get('/recetas/create', 'RecetaController@create')->name('recetas.create');
+
