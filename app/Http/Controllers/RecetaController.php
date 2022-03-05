@@ -4,9 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Receta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class RecetaController extends Controller
 {
+
+    //para realizar la autenticacion del usuario y este no pueda acceder 
+    //la pagina si no esta logeado
+    public function __construct()
+    {
+       $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +45,16 @@ class RecetaController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        //validacion de los campos del formulario crear recetas
+        $data = request()->validate([
+            'titulo'=>'required | min:8'
+        ]);
+        //insercion de datos en DB
+        DB::table('recetas')-> insert([
+            'titulo'=> $data['titulo']
+        ]);
+//redireccionando a otra pagina despues de terminar la insercion de datos
+        return redirect(action('RecetaController@index'));
     }
 
     /**

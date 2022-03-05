@@ -9,11 +9,20 @@
 
 <div class="row justify-content-center mt-5">
     <div class="col-md-8">
-        <form method="POST" action="{{ route('receta.store') }}">
+        <form method="POST" action="{{ route('receta.store') }}" novalidate>
             @csrf
             <div class="form-group">
                 <label for="titulo">Titulo Receta</label>    
-                <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Titulo Receta">
+                <input type="text" name="titulo" 
+                class="form-control @error ('titulo')is-invalid @enderror" 
+                id="titulo" 
+                value="{{old('titulo')}}"
+                placeholder="Titulo Receta">
+           @error('titulo')
+                <span class="invalid-feedback d-block" role="alert">
+                    <strong>{{$message}}</strong>
+                </span>
+           @enderror
             </div>    
         
             <div class="form-group">
