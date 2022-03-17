@@ -32,16 +32,13 @@
                 <td>{{$receta->categoria->nombre}}</td>
                 <td>
 
-                    <form action="{{route('recetas.destroy', ['receta' => $receta->id])}}" method="POST">
-                       @csrf
-                        @method('DELETE')
-                        
-                        <input type="submit" class="btn btn-danger mr-1 d-block w-50" value="Eliminar &times;">
-                    </form>
+                    <eliminar-receta receta-id={{$receta->id}}>
+
+                    </eliminar-receta>
                     <a href="{{route('recetas.edit', ['receta' => $receta->id])}}"
-                        class="btn btn-dark mr-1  w-40">Editar</a>
+                        class="btn btn-dark mb-1  d-line">Editar</a>
                     <a href="{{route('recetas.show', ['receta' => $receta->id])}}"
-                        class="btn btn-success mr-1 w-40">Ver</a>
+                        class="btn btn-success mb-1 d-line">Ver</a>
 
                 </td>
             </tr>
