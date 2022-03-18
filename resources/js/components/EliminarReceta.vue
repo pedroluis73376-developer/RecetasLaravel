@@ -17,7 +17,7 @@ export default {
         eliminarReceta() {
             this.$swal({ 
                 title: "Deseas Eliminar la Receta",
-                text: "Una vez Eliminada no se puede Rceuperar",
+                text: "Una vez Eliminada no se puede Recuperar",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
